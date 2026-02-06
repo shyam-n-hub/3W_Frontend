@@ -1,0 +1,418 @@
+/* Navbar Container */
+.navbar {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3),
+                0 1px 0 rgba(220, 38, 38, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid rgba(220, 38, 38, 0.3);
+    animation: slideDown 0.4s ease-out;
+}
+
+.navbar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+}
+
+/* Brand Logo */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar-brand .icon-emoji {
+    font-size: 28px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand span {
+    background: linear-gradient(135deg, #ffffff 0%, #e5e5e5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.navbar-brand:hover {
+    transform: translateY(-2px);
+}
+
+.navbar-brand:hover .icon-emoji {
+    transform: scale(1.1) rotate(-10deg);
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 8px;
+    align-items: center;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-linke {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-icon {
+    font-size: 20px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.nav-linke span:not(.nav-icon) {
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect Background */
+.nav-linke::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(153, 27, 27, 0.1) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.nav-linke:hover::before {
+    transform: scaleX(1);
+}
+
+.nav-linke:hover {
+    color: #ffffff;
+    background: rgba(220, 38, 38, 0.1);
+}
+
+.nav-linke:hover .nav-icon {
+    transform: scale(1.15);
+}
+
+/* Active Link */
+.nav-linke.active {
+    color: #ffffff;
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.nav-linke.active .nav-icon {
+    color: #ffffff;
+}
+
+.nav-linke.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 2px 2px 0 0;
+}
+
+/* Focus Visible for Accessibility */
+.nav-linek:focus-visible,
+.navbar-brand:focus-visible {
+    outline: 2px solid #dc2626;
+    outline-offset: 2px;
+}
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+    .navbar .container {
+        padding: 0 16px;
+        height: 65px;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+        gap: 10px;
+    }
+
+    .navbar-brand .icon-emoji {
+        font-size: 24px;
+    }
+
+    .nav-links {
+        gap: 4px;
+    }
+
+    .nav-link {
+        padding: 8px 16px;
+        font-size: 14px;
+        gap: 6px;
+    }
+
+    .nav-link span:not(.nav-icon) {
+        display: none;
+    }
+
+    .nav-icon {
+        font-size: 18px;
+    }
+
+    .nav-link {
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        justify-content: center;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+    .navbar .container {
+        padding: 0 12px;
+        height: 60px;
+    }
+
+    .navbar-brand {
+        font-size: 18px;
+        gap: 8px;
+    }
+
+    .navbar-brand .icon-emoji {
+        font-size: 22px;
+    }
+
+    .navbar-brand span:not(.icon-emoji) {
+        display: none;
+    }
+
+    .nav-links {
+        gap: 2px;
+    }
+
+    .nav-link {
+        width: 40px;
+        height: 40px;
+    }
+
+    .nav-icon {
+        font-size: 18px;
+    }
+
+    .nav-link.active::after {
+        display: none;
+    }
+}
+
+/* Bottom Navigation for Mobile (Alternative Layout) */
+@media (max-width: 480px) {
+    .navbar {
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        width: 100%;
+        border-top: 2px solid rgba(220, 38, 38, 0.3);
+        border-bottom: none;
+    }
+
+    .navbar .container {
+        justify-content: center;
+        height: 65px;
+    }
+
+    .navbar-brand {
+        position: absolute;
+        left: 12px;
+    }
+
+    .navbar-brand span:not(.icon-emoji) {
+        display: inline;
+        font-size: 16px;
+    }
+
+    .nav-links {
+        flex: 1;
+        justify-content: center;
+        gap: 8px;
+        max-width: 400px;
+    }
+
+    .nav-link {
+        flex: 1;
+        width: auto;
+        height: 48px;
+        max-width: 80px;
+    }
+
+    /* Add padding to body to prevent content from hiding behind fixed navbar */
+    body {
+        padding-bottom: 65px;
+    }
+}
+
+/* Very Small Mobile Devices */
+@media (max-width: 360px) {
+    .navbar .container {
+        padding: 0 8px;
+    }
+
+    .navbar-brand {
+        font-size: 16px;
+        gap: 6px;
+        left: 8px;
+    }
+
+    .navbar-brand .icon-emoji {
+        font-size: 20px;
+    }
+
+    .nav-links {
+        gap: 4px;
+    }
+
+    .nav-link {
+        width: 38px;
+        height: 38px;
+    }
+
+    .nav-icon {
+        font-size: 16px;
+    }
+}
+
+/* Desktop Large Screens */
+@media (min-width: 1200px) {
+    .navbar .container {
+        padding: 0 40px;
+    }
+
+    .nav-link {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+
+    .nav-link span:not(.nav-icon) {
+        font-weight: 600;
+    }
+}
+
+/* Smooth Scrolling for Fixed Navbar */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px;
+}
+
+@media (max-width: 480px) {
+    html {
+        scroll-padding-bottom: 65px;
+    }
+}
+
+/* Animation on Page Load */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Active Link Glow Effect */
+.nav-link.active::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(220, 38, 38, 0.3) 0%, transparent 70%);
+    animation: pulse-glow 2s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* Hover Tooltip (Desktop Only) */
+@media (min-width: 769px) {
+    .nav-link:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #1a1a1a;
+        color: #ffffff;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 0;
+        animation: fadeInTooltip 0.3s ease forwards;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(220, 38, 38, 0.3);
+        z-index: 1001;
+    }
+}
+
+@keyframes fadeInTooltip {
+    to {
+        opacity: 1;
+        bottom: -35px;
+    }
+}
+
+/* Dark Theme Enhancement */
+@media (prefers-color-scheme: dark) {
+    .navbar {
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    }
+
+    .nav-link:hover {
+        background: rgba(220, 38, 38, 0.15);
+    }
+}
